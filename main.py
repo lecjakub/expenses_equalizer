@@ -5,6 +5,7 @@ import os
 import argparse
 from io import BytesIO
 from command import Command
+from equalizer import Equalizer
 
 DEF_CONFIG = "config/config.ini"
 
@@ -54,9 +55,7 @@ if __name__ == "__main__":
     print("Welcome in expenses equalizer.")
     create_def_config()
 
-    args = parse_args()
-    if args.config:
-        load_config(args.config)
+    eq = Equalizer(url=config['remote']['url'])
 
     cmd = Command()
     load_exp_data()
