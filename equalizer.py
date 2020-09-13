@@ -1,8 +1,9 @@
+from spreadsheet import Spreadsheet
+
 import pandas as pd
 import requests
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
-
 from io import BytesIO
 
 
@@ -23,7 +24,13 @@ class Equalizer():
         self.spreadsheet = pd.DataFrame()
 
     def add_member(self, member_name:str):
-        self.spreadsheet.
+        raise NotImplementedError
+    
+    def load_spreadsheet(self,filepath=None,url=None):
+        self.spreadsheet = Spreadsheet(filepath,url)
+
+    def is_spreadsheet_loaded(self):
+        return self.spreadsheet != None
 
     @staticmethod
     def fromDrive():

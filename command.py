@@ -31,6 +31,7 @@ class Command(cmd.Cmd):
             print('in load command')
             if args.f:
                 print('load from file')
+                self.eq.load_spreadsheet(args.f)
             if args.u:
                 print('load from url')
 
@@ -45,7 +46,7 @@ class Command(cmd.Cmd):
         return line
 
     def check_spreadsheet(self):
-        if self.eq.spreadsheet is None:
+        if not self.eq.is_spreadsheet_loaded():
             ans = input(
                 "No spreadsheet loaded. Do you want to initialize new one? [y/n]")
             if ans.lower() == 'y':
